@@ -17,4 +17,4 @@ Popis souborů:
     script - obstarává obsluhu formuláře, nastavení checkboxů a vykreslení grafu
            - ppomocí AJAX volá getLabels, getDirection, getData
   sql/:
-    createDB - skript pro vytvoření databáze 
+    createDB - skript pro vytvoření databáze
