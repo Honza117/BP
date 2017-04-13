@@ -23,7 +23,7 @@ function getOptions(dataString) {
   //Nastaveni grafu
   var options = {
       curveType: "none",
-      width: 1800,
+      width: '100%',
       height: 480,
       interpolateNulls: true,
       vAxis: { //Osa Y
@@ -40,7 +40,8 @@ function getOptions(dataString) {
       explorer: {
           axis: 'horizontal',
           keepInBounds: true,
-          maxZoomIn: 10.0
+          maxZoomIn: 10.0,
+          maxZoomOut: 8.0,
       },
       legend: {
           position: 'none'

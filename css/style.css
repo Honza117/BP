@@ -1,20 +1,117 @@
 body {
-    margin: 0; padding: 1em;
+    margin: 0;
+    padding: 0;
+    font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
 }
 
 .container {
-    width: 90%;
-    margin: 0 auto; 
-    padding: 1em;
+    width: 100%;
+    margin: 0 auto;
 }
 
 #input{
-    width: 900px;
+  position: relative;
+    margin: 0 auto;
+    padding-top: 2em;
+    max-width: 18%;
+    min-width: 21em;
 }
 
-/*#chart {
-    margin-left: 10%;
-    margin-right: 10%;
-    overflow-x: scroll;
-    width: 400px;
-}*/
+#chart {
+    width: 100%;
+}
+
+input {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display: block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #4885ed;
+}
+
+#input div {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+
+
+#switch {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 20%;
+  min-width: 20em;
+}
+
+#switch ul {
+  padding: 0;
+}
+
+#switch ul li {
+  width: 4em;
+  display: inline-block;
+  text-align: center;
+}
+
+#switch ul li label {
+  display: inline-block;
+}
+
+#switch ul li input {
+  display: inline-block;
+  width: 1em;
+}
+
+#switch div {
+  float: left;
+}
+
+#input form div {
+  padding: 0.5em;
+}
+
+input[type="date"] {
+  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+}
+
+button {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 5px 25px;
+  font-size: 22px;
+  font-family: font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+  color: #fff;
+  background-color: #6496c8;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
+}
+
+button:hover {
+  background-color: #346392;
+  text-shadow: -1px 1px #27496d;
+}
+
+button:active {
+  background-color: #27496d;
+  text-shadow: -1px 1px #193047;
+}
+
+#loading {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#loading img{
+  position: absolute;
+  visibility: hidden;
+  padding-top: 10%;
+  width: 64px;
+  display: inline-block;
+}

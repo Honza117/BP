@@ -30,8 +30,19 @@ $(function(){
       }
   });
 
+  //Zobrazi  - pokud je graf vykreslen
+  $("#switch_there").change(function(){
+      if (drawn){
+        $('#subBtn').trigger('click');
+      }
+  });
+
   $("#subBtn").click(function(){
-    drawChart(drawn);
+    $("#chart").css("visibility","hidden"); //Skryje původní graf
+    $("#loading_gif").css("visibility","visible"); //Zobrazi gif pro animaci
+    setTimeout(function(){
+      drawChart(drawn);
+    }, 200);
     drawn = true;
   });
 

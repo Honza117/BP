@@ -7,6 +7,7 @@ function getDataString() {
   var os = "no";
   var sp = "no";
   var both = "no";
+  var there = "no";
 
   if (document.getElementById('switch_os').checked){
       os = "yes";
@@ -17,10 +18,13 @@ function getDataString() {
   if (document.getElementById('switch_both').checked){
       both = "yes";
   }
+  if (document.getElementById('switch_there').checked){
+      there = "yes";
+  }
 
   //vytvorim POST
-  var dataString = 'from='+from+'&where='+where+'&date='+date+'&os='+os+'&sp='+sp+'&both='+both;
-  alert(dataString);
+  var dataString = 'from='+from+'&where='+where+'&date='+date+'&os='+os+'&sp='+sp+'&both='+both+'&there='+there;
+  //alert(dataString);
   console.log(dataString);
   return dataString;
 }

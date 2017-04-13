@@ -9,7 +9,6 @@
     <!-- Responzivita -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/switch.css">
     <!-- jQuery -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- jQuery UI -->
@@ -23,9 +22,14 @@
     <!-- Load the AJAX API -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Skript -->
+    <script type="text/javascript" src="js/getJSON.js"></script>
+    <script type="text/javascript" src="js/checkbox.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
+    <script type="text/javascript" src="js/options.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/auto.js"></script>
-    
+
+
   </head>
 
   <body>
@@ -33,13 +37,16 @@
       <div id="input">
         <form>
           <div>
-            Odkud: <input type="text" name="from" id="input_from"> 
+            <input type="text" name="from" id="input_track" placeholder="Trať">
           </div>
           <div>
-            Kam: <input type="text" name="where" id="input_where"> 
+            <input type="text" name="from" id="input_from" placeholder="Odkud">
           </div>
           <div>
-            Datum: <input type="date" name="date" id="input_date">
+            <input type="text" name="where" id="input_where" placeholder="Kam">
+          </div>
+          <div>
+            <input type="text" name="date" id="input_date" placeholder="Datum" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
           </div>
         </form>
         <div>
@@ -48,30 +55,30 @@
         </div>
       </div>
 
-      <div id="swith">
-        <div id ="switch_1">
-          <label class="switch">
-            Zobrazit OS: <input type="checkbox" id="switch_os" checked="checked">
-            <div class="slider round"></div>
-          </label>
-        </div>
-        <br>
-        <div id="switch_2">
-          <label class="switch">
-            Zobrazit SP: <input type="checkbox" id="switch_sp" checked="checked">
-            <div class="slider round"></div>
-          </label>
-        </div>
-        <br>
-        <div id="switch_3">
-          <label class="switch">
-            Zobrazit zpáteční: <input type="checkbox" id="switch_both">
-            <div class="slider round"></div>
-          </label>
-        </div>
+      <div id="switch">
+        <ul>
+          <li>
+            <label class="switch">OS</label>
+            <input type="checkbox" id="switch_os" checked="checked">
+          </li>
+          <li>
+            <label class="switch">SP</label>
+            <input type="checkbox" id="switch_sp" checked="checked">
+          </li>
+          <li>
+            <label class="switch">Tam</label>
+            <input type="checkbox" id="switch_there" checked="checked">
+          </li>
+          <li>
+            <label class="switch">Zpět</label>
+            <input type="checkbox" id="switch_both">
+          </li>
+        </ul>
       </div>
 
-      <div id="chart">
+      <div id="loading">
+        <img src="images/loading.gif" id="loading_gif">
+        <div id="chart"></div>
       </div>
 
     </div>
