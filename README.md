@@ -18,3 +18,4 @@ Popis souborů:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;- ppomocí AJAX volá getLabels, getDirection, getData<br />
 &nbsp;sql/:<br />
 &nbsp;&nbsp;createDB - skript pro vytvoření databáze<br />
+&nbsp;&nbsp;fillDB - skript pro vytvoření sql příkazů pro naplnění databáze, jako vstup vlaky.txt<br />
