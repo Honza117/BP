@@ -119,7 +119,11 @@ if ($from_id == $where_id){
 //print_r($stations);
 //echo "<br>";
 
-$os_train_color = array(); //Pole pro ulozeni id os vlaku kvuli vybarveni (modrou)
+$blue_trains_id = array(); //Pole pro ulozeni id os vlaku kvuli vybarveni (modrou)
+$red_trains_id = array(); //R, EN
+$yellow_trains_id = array();
+$green_trains_id = array(); //Rx, RJ, EC, Ex
+
 $trains = array();
 $id_opposite = array(); //Pole pro ulozeni opacnych vlaku
 
@@ -151,48 +155,48 @@ foreach ($stations as $key => $value){
         }
         else if (($sp == "yes") && ($os == "yes")) {
             if (($both == "yes") && ($there == "yes")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, P.smer_id, V.typ FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND S.vlak_id=V.id";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND S.vlak_id=V.id";
             }
             else if (($both == "no") && ($there == "yes")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, P.smer_id, V.typ FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id";
             }
             else if (($both == "yes") && ($there == "no")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, P.smer_id, V.typ FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='j' AND S.vlak_id=V.id";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='j' AND S.vlak_id=V.id";
             }
         }
     }
     else { //Pokud smer = j
         if (($os == "yes") && ($sp == "no")){
             if (($both == "yes") && ($there == "yes")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND S.vlak_id=V.id AND  V.typ='os'";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND S.vlak_id=V.id AND  V.typ='os'";
             }
             else if (($both == "no") && ($there == "yes")) {
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='j' AND S.vlak_id=V.id AND  V.typ='os'";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='j' AND S.vlak_id=V.id AND  V.typ='os'";
             }
             else if (($both == "yes") && ($there == "no")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id AND  V.typ='os'";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id AND  V.typ='os'";
             }
         }
         else if (($sp == "yes") && ($os == "no")){
             if (($both == "yes") && ($there == "yes")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND S.vlak_id=V.id AND V.typ='sp'";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND S.vlak_id=V.id AND V.typ='sp'";
             }
             else if (($both == "no") && ($there == "yes")) {
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='j' AND S.vlak_id=V.id AND V.typ='sp'";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='j' AND S.vlak_id=V.id AND V.typ='sp'";
             }
             else if (($both == "yes") && ($there == "no")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id AND V.typ='sp'";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id AND V.typ='sp'";
             }
         }
         else if (($sp == "yes") && ($os == "yes")){
             if (($both == "yes") && ($there == "yes")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, P.smer_id, V.typ FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND S.vlak_id=V.id";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND S.vlak_id=V.id";
             }
             else if (($both == "no") && ($there == "yes")) {
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, P.smer_id, V.typ FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='j' AND S.vlak_id=V.id";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='j' AND S.vlak_id=V.id";
             }
             else if (($both == "yes") && ($there == "no")){
-                $qry = "SELECT DISTINCT S.id, S.vlak_id, P.smer_id, V.typ FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id";
+                $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND S.provozni_den='2017-03-13' AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id";
             }
         }
     }
@@ -205,8 +209,16 @@ foreach ($stations as $key => $value){
             $trains[intval($row["vlak_id"])][intval($row["cislo_spoje"])][] = intval($row["id"]); //vlak => id => cislo spoje => spoje
 
             //Ulozim id os vlaku pro modrou barvu
-            if (($row["typ"] == "os")&&(!in_array(intval($row["vlak_id"]), $os_train_color))){
-                $os_train_color[] = intval($row["vlak_id"]); //Pole os vlaku pro barvu (modrou)
+            if ((($row["typ"] == "OS") || ($row["typ"] == "SP"))&&(!in_array(intval($row["vlak_id"]), $blue_trains_id))){
+                $blue_trains_id[] = intval($row["vlak_id"]); //Pole os vlaku pro barvu (modrou)
+            }
+            //Ulozim id os vlaku pro cervenou barvu
+            if ((($row["typ"] == "R") || ($row["typ"] == "EN"))&&(!in_array(intval($row["vlak_id"]), $red_trains_id))){
+                $red_trains_id[] = intval($row["vlak_id"]); //Pole os vlaku pro barvu (modrou)
+            }
+            //Ulozim id os vlaku pro zelenou barvu
+            if ((($row["typ"] == "Rx") || ($row["typ"] == "RJ") || ($row["typ"] == "EC") || ($row["typ"] == "Ex"))&&(!in_array(intval($row["vlak_id"]), $green_trains_id))){
+                $green_trains_id[] = intval($row["vlak_id"]); //Pole os vlaku pro barvu (modrou)
             }
 
             //Pokud smer s, ulozim id vlaku se smerem j
@@ -226,8 +238,6 @@ foreach ($stations as $key => $value){
         echo "0 results E"; //Zakodovanu kvuli spojum SP (mivaji 0 results)
     }*/
 }
-//print_r($trains);
-//echo "<br>";
 
 //Ulozim ke kazdemu vlaku jeho cislo
 foreach ($trains as $key => $value){
@@ -265,60 +275,110 @@ $json_data["cols"][] = $col_member;
 
 //Podle poctu vlaku vlozim col pro spoje
 foreach ($trains as $key => $value){
+    $num = $value["cislo"];
+    //Pres vsechny spoje (jeden vlak muze jet vickrat)
+    foreach ($value as $arr => $val){
 
-    $num_of_trains[] = $value["cislo"]; //Ulozim cisla vlaku pro tooltip
+        if (!is_int($arr)){ //Pokud je to [cislo]
+            break;
+        }
 
-    $col_member["id"] = "";
-    $col_member["label"] = "Vlak {$value["cislo"]}";
-    $col_member["pattern"] = "";
-    $col_member["type"] = "number";
-    $json_data["cols"][] = $col_member;
+        $num_of_trains[] = $num; //Ulozim cisla vlaku pro tooltip
 
-    //Data slouzici pro zmenu barvy
-    $style_member["id"] = "";
-    $style_member["role"] = "style";
-    $style_member["type"] = "string";
-    $json_data["cols"][] = $style_member;
+        $col_member["id"] = "";
+        $col_member["label"] = "Vlak {$num}";
+        $col_member["pattern"] = "";
+        $col_member["type"] = "number";
+        $json_data["cols"][] = $col_member;
 
-    //Data slouzici jako tooltip
-    $tooltip_member["id"] = "";
-    $tooltip_member["role"] = "tooltip";
-    $tooltip_member["type"] = "string";
-    $tooltip_member["p"]["html"] = "true";
-    $json_data["cols"][] = $tooltip_member;
+        //Data slouzici pro zmenu barvy
+        $style_member["id"] = "";
+        $style_member["role"] = "style";
+        $style_member["type"] = "string";
+        $json_data["cols"][] = $style_member;
+
+        //Data slouzici jako tooltip
+        $tooltip_member["id"] = "";
+        $tooltip_member["role"] = "tooltip";
+        $tooltip_member["type"] = "string";
+        $tooltip_member["p"]["html"] = "true";
+        $json_data["cols"][] = $tooltip_member;
+
+    }
 }
+
+//print_r($json_data["cols"]);
 
 //Vytvorim pole pro rows
 $row_member = array();
 $row_submember = array(); //pro c [ ]
 $submember_data = array(); //Pole pro casy vlaku v jednotlivych stanicich
 
-//print_r($os_train_color);
+//print_r($blue_trains_id);
 //echo "<br><br>";
 //print_r($trains);
 //echo "<br><br>";
 
-$blue_trains = array(); //Pole obsahujici poradi spoju urcene $connect_cnt pro barvu (modrou)
+$blue_trains = array(); //OS, SP
+$red_trains = array(); //R, EN
+$yellow_trains = array();
+$green_trains = array(); //Rx, RJ, EC
+
 $opposite_trains = array(); //Pole obsahujici poradi spoju s opacnym smerem pro upravy tooltipu
 //Vytvorim json data pro vsechny vlaky
 $connect_cnt = 0; //Pocitadlo spoju (jeden vlak i vice spoju)
-$is_in = false;
+$is_in_blue;
+$is_in_red;
+$is_in_yellow;
+$is_in_green;
+
 foreach ($trains as $train_id => $train_inf){
+    $is_in_blue = false;
+    $is_in_red = false;
+    $is_in_yellow = false;
+    $is_in_green = false;
 
     //Pokud se jedna o vlak, ktery ma byt modre (muze mit vic spoju)
-    if (in_array($train_id, $os_train_color)){
-        $is_in = true;
+    if (in_array($train_id, $blue_trains_id)){
+        $is_in_blue = true;
     }
     else{
-        $is_in = false;
+        $is_in_blue = false;
+    }
+    if (in_array($train_id, $red_trains_id)){
+        $is_in_red = true;
+    }
+    else{
+        $is_in_red = false;
+    }
+    if (in_array($train_id, $yellow_trains_id)){
+        $is_in_yellow = true;
+    }
+    else{
+        $is_in_yellow = false;
+    }
+    if (in_array($train_id, $green_trains_id)){
+        $is_in_green = true;
+    }
+    else{
+        $is_in_green = false;
     }
 
     foreach ($train_inf as $conn_num => $con_arr){
         if (is_numeric($conn_num)){ //abych nevybral [cislo]
             $connect_cnt++;
 
-            if ($is_in){
+            if ($is_in_blue){
                 $blue_trains[] = $connect_cnt;
+            }
+            if ($is_in_red){
+                $red_trains[] = $connect_cnt;
+            }
+            if ($is_in_yellow){
+                $yellow_trains[] = $connect_cnt;
+            }
+            if ($is_in_green){
+                $green_trains[] = $connect_cnt;
             }
 
             //Pokud se jedna o vlak co je v $id_opposite, jeho poradi priradim do $opposite_trains
@@ -440,10 +500,16 @@ foreach ($submember_data as $station => $times){
                         $row_submember["v"] = "color: #4885ed"; //modra
                         $row_member["c"][$i] = $row_submember;
                     }
-                    else {
+                    if (in_array($property_cnt, $red_trains)){
                         $i++;
                         //echo "cerveny: " . $i . "<br>";
-                        $row_submember["v"] = "color: #db3236;stroke-width: 5;"; //cervena
+                        $row_submember["v"] = "color: #db3236;stroke-width: 3;"; //cervena
+                        $row_member["c"][$i] = $row_submember;
+                    }
+                    if (in_array($property_cnt, $green_trains)){
+                        $i++;
+                        //echo "cerveny: " . $i . "<br>";
+                        $row_submember["v"] = "color: #3cba54"; //zelena
                         $row_member["c"][$i] = $row_submember;
                     }
 

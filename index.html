@@ -37,13 +37,23 @@
       <div id="input">
         <form>
           <div>
-            <input type="text" name="from" id="input_track" placeholder="Trať">
+            <select name="track" id="input_track">
+              <option value="" disabled selected>Trať</option>
+              <option value="111">111 (Brno - Praha)</option>
+              <option value="340">340 (Brno - Uherské Hradiště)</option>
+            </select>
           </div>
           <div>
-            <input type="text" name="from" id="input_from" placeholder="Odkud">
+            <input list="stations_from" placeholder="Odkud" id="input_from"/>
+            <datalist class="stations" id="stations_from">
+  
+            </datalist>
           </div>
           <div>
-            <input type="text" name="where" id="input_where" placeholder="Kam">
+            <input list="stations_where" placeholder="Kam" id="input_where"/>
+            <datalist class="stations" id="stations_where">
+  
+            </datalist>
           </div>
           <div>
             <input type="text" name="date" id="input_date" placeholder="Datum" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
@@ -58,12 +68,36 @@
       <div id="switch">
         <ul>
           <li>
-            <label class="switch">OS</label>
+            <label class="switch">OS</label> 
             <input type="checkbox" id="switch_os" checked="checked">
           </li>
           <li>
             <label class="switch">SP</label>
             <input type="checkbox" id="switch_sp" checked="checked">
+          </li>
+          <li>
+            <label class="switch">Ex</label>
+            <input type="checkbox" id="switch_ex" checked="checked">
+          </li>
+          <li>
+            <label class="switch">R</label>
+            <input type="checkbox" id="switch_r" checked="checked">
+          </li>
+          <li>
+            <label class="switch">Rx</label>
+            <input type="checkbox" id="switch_rx" checked="checked">
+          </li>
+          <li>
+            <label class="switch">RJ</label>
+            <input type="checkbox" id="switch_rj" checked="checked">
+          </li>
+          <li>
+            <label class="switch">EC</label>
+            <input type="checkbox" id="switch_ec" checked="checked">
+          </li>
+          <li>
+            <label class="switch">EN</label>
+            <input type="checkbox" id="switch_en" checked="checked">
           </li>
           <li>
             <label class="switch">Tam</label>

@@ -31,6 +31,7 @@ function drawChart(drawn) {
 
           function myReadyHandler() {
             $("#loading_gif").css("visibility","hidden");
+            $("#loading_gif").css("position","absolute");
             $("#chart").css("visibility","visible");
           }
 

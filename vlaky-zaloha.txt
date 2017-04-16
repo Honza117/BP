@@ -1,0 +1,32 @@
+580  RJ  Leoš Janáček
+578  Ex  František Kmoch
+1030  RJ  RegioJet
+988  R  Doubrava
+574  Ex  Zdeněk Fibich
+872  Rx  Svojanov
+1032  RJ  RegioJet
+282  EC  Slovenská strela
+986  R  Sázava
+70  RJ  Gustav Mahler
+870  Rx  Punkva
+280  EC  Jan Jesenius
+984  R  Svratka
+72  RJ  Bedřich Smetana
+868  Rx  Špilberk
+172  EC  Hungaria
+982  R  Vysočina
+74  RJ  Franz Schubert
+866  Rx  Macocha
+278  EC  Danubius
+980  R  Lipnice
+76  RJ  Antonín Dvořák
+864  Rx  Pardubický Porter
+276  EC  Slovan
+976  R  Porta coeli
+78  RJ  Johann Strauss
+862  Rx  Jiří Bouda
+1038  RJ  RegioJet
+274  EC  Jaroslav Hašek
+972  R  Beze jména
+370  RJ  Joseph Haydn
+272  EC  Csárdás

@@ -39,6 +39,7 @@ $(function(){
 
   $("#subBtn").click(function(){
     $("#chart").css("visibility","hidden"); //Skryje původní graf
+    $("#loading_gif").css("position","relative"); //Zobrazi gif pro animaci
     $("#loading_gif").css("visibility","visible"); //Zobrazi gif pro animaci
     setTimeout(function(){
       drawChart(drawn);
