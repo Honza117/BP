@@ -11,8 +11,8 @@ def helpMessage():
         '--help             Vytiskne napovedu, zadavejte samostatne\n'
         '-i filename       Zadany vstupni soubor ve formatu XML\n'
         '-o filename       Zadany vystupni soubor ve formatu\n'
-        "-tid=x             Cislo x udavajici prvni ID vlaku\n"
-        '-mid=y             Cislo y znacici smer spoje (1=s/2=j)\n'
+        '-tid x             Cislo x udavajici prvni ID vlaku\n'
+        '-mid y             Cislo y znacici smer spoje (1=s/2=j)\n'
         'Skript ocekava vstupni soubor ve formatu vlak\\n cas odjezdu/prijezdu\\n\n'
         'Jednotlive informace jsou od sebe oddeleny presne 2mi mezerami')
 
