@@ -9,8 +9,8 @@ def helpMessage():
         '\n'
         'POUZITI:\n'
         '--help             Vytiskne napovedu, zadavejte samostatne\n'
-        '--i=filename       Zadany vstupni soubor ve formatu XML\n'
-        '--o=filename       Zadany vystupni soubor ve formatu\n'
+        '-i filename       Zadany vstupni soubor ve formatu XML\n'
+        '-o filename       Zadany vystupni soubor ve formatu\n'
         "-tid=x             Cislo x udavajici prvni ID vlaku\n"
         '-mid=y             Cislo y znacici smer spoje (1=s/2=j)\n'
         'Skript ocekava vstupni soubor ve formatu vlak\\n cas odjezdu/prijezdu\\n\n'
@@ -28,8 +28,12 @@ def parseTrain(line, outputfile, tid, pid, sid, mid, line_cnt, cnum):
     write_s = False #Zapis spoje
     space_cnt = 0
     word_cnt = 1
-    
-    if ((line_cnt == 1) or (line_cnt%15 == 0)): #prvni a kazda 15. line - vlak
+
+    #print(line_cnt)
+    #print(line)
+
+    if ((line_cnt == 0) or (line_cnt%14 == 0)): #prvni a kazda 14. line - vlak
+        #print("vlak")
         for ch in line:
             if ((ord(ch) == 10) or (ord(ch) == 0x0D)):
                 continue
@@ -57,6 +61,7 @@ def parseTrain(line, outputfile, tid, pid, sid, mid, line_cnt, cnum):
             f.write(out+'\n')
     
     else: #zbytek - spoje + prijezdy
+        #print("zbytek")
         for ch in line:
             if ((ord(ch) == 10) or (ord(ch) == 0x0D)):
                 continue
@@ -111,18 +116,18 @@ def main(argv):
 
     with codecs.open(inputfile,'r',encoding='utf8') as f:
         for line in f:
-            line_cnt += 1
-            if ((line_cnt > 1) and (line_cnt % 15 != 0)): #Pokud je cokoliv krome 1 a 15 line, zvysim id prijezdu
+            
+            if ((line_cnt > 0) and (line_cnt % 14 != 0)): #Pokud je cokoliv krome 1 a 14 line, zvysim id prijezdu
                 if ((pid > 1) and (pid%13 == 0)): #Pokud uz bylo 13 stanic, sid zase od 0
                     sid = 0
                     cnum += 1
                 pid += 1 #Zvysim id prijezdu
                 sid += 1 #Zvysim id stanice
-            if (line_cnt%15 == 0): #Pokud je prvni nebo 15 line, zvysim id vlaku
+            if ((line_cnt > 0) and (line_cnt%14 == 0)): #Pokud je prvni nebo 15 line, zvysim id vlaku
                 tid += 1
                 
             parseTrain(line, outputfile, tid, pid, sid, mid, line_cnt, cnum)
-            
+            line_cnt += 1
             
  
 if __name__ == '__main__':
