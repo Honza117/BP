@@ -34,8 +34,8 @@ function getOptions(dataString) {
           gridlines: {
               count: 76
           },
-          minValue: new Date(2017, 3, 13, 1, 0, 0),  // bude zobrazen cely provozni den na trati
-          maxValue: new Date(2017, 3, 14, 3, 0, 0)
+          minValue: new Date(2017, 3, 12, 0, 0, 0),  // bude zobrazen cely provozni den na trati
+          maxValue: new Date(2017, 3, 15, 0, 0, 0)
       },
       explorer: {
           axis: 'horizontal',

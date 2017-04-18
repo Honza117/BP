@@ -9,32 +9,11 @@ $(function(){
     }
   });
 
-  //Zobrazi os - pokud graf vykreslen, prekresli
-  $("#switch_os").change(function(){
+  //Zobrazi data podle prepinace - pokud graf vykreslen, prekresli
+  $("input.types").change(function(){
     if (drawn){
       $('#subBtn').trigger('click');
     }
-  });
-
-  //Zobrazi sp - pokud graf vykreslen, prekresli
-  $("#switch_sp").change(function(){
-    if (drawn){
-      $('#subBtn').trigger('click');
-    }
-  });
-
-  //Zobrazi zpatecni - pokud je graf vykreslen
-  $("#switch_both").change(function(){
-      if (drawn){
-        $('#subBtn').trigger('click');
-      }
-  });
-
-  //Zobrazi  - pokud je graf vykreslen
-  $("#switch_there").change(function(){
-      if (drawn){
-        $('#subBtn').trigger('click');
-      }
   });
 
   $("#subBtn").click(function(){

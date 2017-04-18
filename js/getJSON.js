@@ -17,7 +17,7 @@ function getJSON(dataString, drawn) {
   }
 
   //Nulova data pokud se ma vykreslit prazdny graf
-  if ((jsonData.search("0 results") != -1) && (drawn)){
+  if (((jsonData.search("0 results") != -1) || (jsonData.search("rows") == -1)) && (drawn)){
     jsonData = {
         "cols": [
             {"id":"","label":"Time","pattern":"","type":"datetime"},

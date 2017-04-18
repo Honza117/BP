@@ -11,8 +11,10 @@ def helpMessage():
         '--help             Vytiskne napovedu, zadavejte samostatne\n'
         '-i filename       Zadany vstupni soubor ve formatu XML\n'
         '-o filename       Zadany vystupni soubor ve formatu\n'
-        '-tid x             Cislo x udavajici prvni ID vlaku\n'
-        '-mid y             Cislo y znacici smer spoje (1=s/2=j)\n'
+        '-tid w             Cislo w udavajici posledni ID vlaku v DB (nebo 0)\n'
+        '-pid x             Cislo x udavajici posledni ID spoje v DB (nebo 0)\n'
+        '-cnum y            Cislo y udavajici posledni cislo spoje v DB (nebo 0)\n'
+        '-mid z             Cislo z znacici smer spoje (1=s/2=j)\n'
         'Skript ocekava vstupni soubor ve formatu vlak\\n cas odjezdu/prijezdu\\n\n'
         'Jednotlive informace jsou od sebe oddeleny presne 2mi mezerami')
 
@@ -111,8 +113,12 @@ def main(argv):
         outputfile = sys.argv[4]
     if (sys.argv[5] == "-tid"):
         tid = int(sys.argv[6])
-    if (sys.argv[7] == "-mid"):
-        mid = int(sys.argv[8])
+    if (sys.argv[7] == "-pid"):
+        pid = int(sys.argv[8])
+    if (sys.argv[9] == "-cnum"):
+        cnum = int(sys.argv[10])
+    if (sys.argv[11] == "-mid"):
+        mid = int(sys.argv[12])
 
     with codecs.open(inputfile,'r',encoding='utf8') as f:
         for line in f:

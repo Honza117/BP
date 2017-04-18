@@ -19,6 +19,7 @@ function drawChart(drawn) {
           var options = getOptions(dataString);
 
           //alert(jsonData);
+          //console.log(jsonData);
 
           //Listener
 
