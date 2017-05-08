@@ -1,10 +1,9 @@
 <?php
 // Nacteme hledany retezec do promenne
 $q = strtolower($_POST["q"]);
-$t = ($_POST["t"]);
 $track = ($_POST["track"]);
 
-if (!$q) return;
+//if (!$q) return;
 // Pripojime se k databazi
 $host = "wm145.wedos.net";
 $username = "w158163_spoje";
@@ -21,12 +20,12 @@ if (!$con) {
 //Změna charsetu na utf8
 mysqli_set_charset($con,"utf8");
 
-if ($t == "yes"){
-  $qry = "SELECT cislo FROM trate WHERE CONVERT (cislo, CHAR(16)) LIKE '$q%'";
+if (intval($track) == 0){
+  $rows = -1;
+  return $rows;
 }
-else{
-  $qry = "SELECT DISTINCT S.jmeno FROM stanice S JOIN trate T WHERE UPPER(S.jmeno) LIKE UPPER('$q%') AND S.trat_id=T.id AND T.cislo='$track'";
-}
+
+$qry = "SELECT DISTINCT S.jmeno FROM stanice S JOIN trate T WHERE UPPER(S.jmeno) LIKE UPPER('%$q%') AND S.trat_id=T.id AND T.cislo='$track'";
 
 $result = mysqli_query($con,$qry);
 

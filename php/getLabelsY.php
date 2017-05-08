@@ -61,22 +61,23 @@ $result = mysqli_query($con,$qry);
 $ticks = array(); 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $ticks[$row["vzdalenost"]] = $row["jmeno"];
+        //$ticks[$row["vzdalenost"]] = $row["jmeno"];
+        $ticks[] = $row["jmeno"];
         }
 } else {
     echo "0 results";
 }
 
-$data = array();
+/*$data = array();
 $data_member = array();
 
 foreach ($ticks as $key => $value){
     $data_member["v"] = $key;
     $data_member["f"] = $value;
     $data[] = $data_member;
-}
+}*/
 
-$json_data = json_encode($data);
+$json_data = json_encode($ticks);
 mysqli_close($con);
 echo $json_data;
 ?>
