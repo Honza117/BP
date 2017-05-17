@@ -7,7 +7,6 @@ $from = $_POST["from"];
 $where = $_POST["where"];
 $date = $_POST["date"];
 $date = "2017-03-13"; //TESTOVACI HODNOTA
-//echo "Odkud: " . $from . "<br>" . "Kam: " . $where . "<br>" . "Kdy: " . $date . "<br>";
 
 /* 
  * Obsluha databaze 
