@@ -136,6 +136,9 @@ foreach ($enable_types as $type => $value) {
             $qry_member = $qry_member . " OR V.typ='{$type}'";
         }
     }
+    else{
+        continue;
+    }
 }
 
 //Vsechny spoje ID v den=$date k vlakum ID pres stanice ID
@@ -163,7 +166,7 @@ foreach ($stations as $key => $value){
             $qry = "SELECT DISTINCT S.id, S.vlak_id, V.typ, P.smer_id, P.cislo_spoje FROM spoje S JOIN prijezdy P JOIN smer M JOIN vlak V WHERE P.stanice_id='$key' AND P.id=S.prijezd_id AND (S.provozni_den='2017-03-13' OR S.provozni_den='2017-03-14') AND P.smer_id=M.id AND M.smer='s' AND S.vlak_id=V.id".$qry_member.")";
         }
     }
-    
+
     $result = mysqli_query($con,$qry);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -212,6 +215,16 @@ foreach ($stations_length as $key => $value){
     $data_y[$counter] = (string)$value;
     $counter++;
     $data_y[$counter] = (string)$value;
+    $counter++;
+}
+
+//Vytvorim data pro y2
+$counter = 0;
+$data_y2 = array();
+foreach ($stations_length as $key => $value){
+    $data_y2[$counter] = (string)$value;
+    $counter++;
+    $data_y2[$counter] = (string)$value;
     $counter++;
 }
 
@@ -305,24 +318,29 @@ foreach ($trains as $key => $value){
              $data_member["line"]["color"] = "rgb(0,87,231)";
             break;
         case "Ex":
-             $data_member["line"]["color"] = "rgb(0,87,231)";
+             $data_member["line"]["color"] = "rgb(17,24,77)";
+             $data_member["line"]["width"] = 5.4;
             break;
         case "Rx":
-             $data_member["line"]["color"] = "rgb(0,87,231)";
+             $data_member["line"]["color"] = "rgb(69,177,206)";
+             $data_member["line"]["width"] = 3.6;
             break;
         case "RJ":
-             $data_member["line"]["color"] = "rgb(0,87,231)";
+             $data_member["line"]["color"] = "rgb(28,58,131)";
+             $data_member["line"]["width"] = 4.8;
             break;
         case "EC":
-            $data_member["line"]["color"] = "rgb(0,135,68)";
+            $data_member["line"]["color"] = "rgb(56,114,167)";
+            $data_member["line"]["width"] = 4.2;
             break;
         case "EN":
-             $data_member["line"]["color"] = "rgb(214,45,32)";
+             $data_member["line"]["color"] = "rgb(169,218,209)";
+             $data_member["line"]["width"] = 5;
             break;
         default:
             break;
     }
-    //$data_member["line"]["width"] = 3;
+    //$data_member["line"]["width"] = 5;
     $data_member["type"] = "scatter";
     $data_member["name"] = $train_name; //Jmeno vlaku
     //$data_member["text"] = ["Vlak 222<br>22:23:00", "Vlak 222<br>22:28:00", "Vlak 222<br>22:35:00"]; //sem doplnim text jako dole tooltip
@@ -330,6 +348,27 @@ foreach ($trains as $key => $value){
     $data_member["connectgaps"] = true;
     $data[] = $data_member;
 }
+
+/* Lze upravit pro zobrazeni 3. osy Y */
+/*$data_member = array();
+$data_member["type"] = "scatter";
+$data_member["y"] = $data_y2;
+$data_member["yaxis"] = "y2";
+foreach ($data_y2 as $value){
+    $data_member["x"][] = "00:00:00";
+}
+$data[] = $data_member;*/
+
+$data_member = array();
+$data_member["type"] = "scatter";
+$data_member["y"] = $data_y2;
+$data_member["yaxis"] = "y2";
+foreach ($data_y2 as $value){
+    $data_member["x"][] = "00:00:00";
+}
+$data[] = $data_member;
+
+
 $json_data = json_encode($data, true);
 echo $json_data;
 ?>

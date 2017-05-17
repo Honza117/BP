@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Skript -->
     <script type="text/javascript" src="js/getJSON.js"></script>
-    <script type="text/javascript" src="js/checkbox.js"></script>
+    <script type="text/javascript" src="js/events.js"></script>
     <script type="text/javascript" src="js/form.js"></script>
     <script type="text/javascript" src="js/options.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
@@ -37,6 +37,15 @@
 
   <body>
     <div class="container">
+      
+      <div id="burger">
+          <img src="../images/menu.png">
+          <div id="burger_content">
+            <span id="share">Sdílet</span>
+            <span id="refresh">Obnovit</span>
+          </div>
+      </div>
+
       <div id="input">
         <form>
           <div>
@@ -64,47 +73,50 @@
         </form>
         <div>
           <button type="button" id="subBtn">Hledej</button>
-          <p id="msg"></p>
         </div>
       </div>
 
       <div id="switch">
         <ul>
           <li>
-            <label class="switch">OS</label> 
             <input type="checkbox" id="switch_os" checked="checked" class="types">
+            <label class="switch">OS</label> 
           </li>
           <li>
-            <label class="switch">SP</label>
             <input type="checkbox" id="switch_sp" checked="checked" class="types">
+            <label class="switch">SP</label>
           </li>
           <li>
-            <label class="switch">Ex</label>
             <input type="checkbox" id="switch_ex" checked="checked" class="types">
+            <label class="switch">Ex</label>
           </li>
           <li>
-            <label class="switch">Rx</label>
             <input type="checkbox" id="switch_rx" checked="checked" class="types">
+            <label class="switch">Rx</label>
           </li>
           <li>
-            <label class="switch">RJ</label>
             <input type="checkbox" id="switch_rj" checked="checked" class="types">
+            <label class="switch">RJ</label>
           </li>
           <li>
-            <label class="switch">EC</label>
             <input type="checkbox" id="switch_ec" checked="checked" class="types">
+            <label class="switch">EC</label>
           </li>
           <li>
-            <label class="switch">EN</label>
             <input type="checkbox" id="switch_en" checked="checked" class="types">
+            <label class="switch">EN</label>
           </li>
           <li>
-            <label class="switch">Tam</label>
             <input type="checkbox" id="switch_there" checked="checked" class="types">
+            <label class="switch">Tam</label>
           </li>
           <li>
-            <label class="switch">Zpět</label>
             <input type="checkbox" id="switch_both" class="types">
+            <label class="switch">Zpět</label>
+          </li>
+          <li>
+            <input type="checkbox" id="switch_zoom" class="types">
+            <label class="switch">Zoom Y</label>
           </li>
         </ul>
       </div>

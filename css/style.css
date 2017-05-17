@@ -1,56 +1,100 @@
-body {
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
     font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
 }
 
 .container {
     width: 100%;
+    height: 100%;
     margin: 0 auto;
 }
 
 #input{
   position: relative;
-    margin: 0 auto;
-    padding-top: 2em;
-    max-width: 18%;
-    min-width: 21em;
+  margin: 0 auto;
+  padding-top: 0.5em;
+  max-width: 18%;
+  min-width: 21em;
+  min-height: 20em;
+  max-height: 30%;
+}
+
+#burger{
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  margin: 0.5em;
+}
+
+#burger_content{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 8em;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+#burger_content span{
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 12px 16px;
+}
+
+#burger:hover #burger_content{
+  display: block;
+  cursor: pointer;
+}
+
+#switch {
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  max-width: 100%;
+  min-width: 20em;
 }
 
 #chart {
-    width: 100%;
+  width: 100%;
+  height: 60%;
 }
 
-input {
-  font-size:18px;
-  padding:10px 10px 10px 5px;
+input, select {
+  font-size: 18px;
+  padding: 10px 10px 10px 10px;
   display: block;
-  width:300px;
-  border:none;
-  border-bottom:1px solid #4885ed;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #0057e7;
+}
+
+input{
+  width:  95%;
+}
+
+select {
+  padding-left: 5px;
+  border:1px solid #0057e7;
+  background: white;
 }
 
 #input div {
   text-align: center;
   margin: 0 auto;
-  padding-top: 2em;
-  padding-bottom: 1em;
-}
-
-
-#switch {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 20%;
-  min-width: 20em;
+  padding: 0.5em;
 }
 
 #switch ul {
   padding: 0;
+  margin: 0;
 }
 
 #switch ul li {
-  width: 4em;
+  width: 5.5em;
   display: inline-block;
   text-align: center;
 }
@@ -68,26 +112,20 @@ input {
   float: left;
 }
 
-#input form div {
-  padding: 0.5em;
-}
-
 input[type="date"] {
   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
 }
 
 button {
   display: inline-block;
-  margin: 0 10px 0 0;
   padding: 5px 25px;
   font-size: 22px;
-  font-family: font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
   line-height: 1.8;
-  appearance: none;
   box-shadow: none;
   border-radius: 0;
   color: #fff;
-  background-color: #6496c8;
+  background-color: #0057e7;
   text-shadow: -1px 1px #417cb8;
   border: none;
 }
@@ -102,16 +140,15 @@ button:active {
   text-shadow: -1px 1px #193047;
 }
 
-#loading {
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-}
-
 #loading img{
-  position: absolute;
+  margin: 0 auto;
+  position: relative;
   visibility: hidden;
   padding-top: 10%;
   width: 64px;
   display: inline-block;
+}
+
+datalist { 
+    display: visible !important;
 }

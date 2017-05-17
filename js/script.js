@@ -1,16 +1,22 @@
 //Ajax obsluha formulare
-function drawChart(drawn) {
+function drawChart(drawn, shareData, shared) {
 
-        var dataString = getDataString();
-        //alert(dataString);
-        console.log(dataString);
-        //var req = "getDataPlotly.php?" + dataString;
-        //window.history.pushState(dataString, "něco", req);
-        //Ajax spusti php skript
-        var data = getJSON(dataString, drawn);
-        //console.log(data);
-        var chart = document.getElementById('chart');
-        var layout = getLayout(dataString);
+	//Pokud se nejedna o sdileni
+    if ((shareData.length < 1) || (shared)){
+  	   	var dataString = getDataString();
+		console.log("nesdilim");
+    }
+	//Pokud se jedna o sdileni
+    else if ((shareData.length > 1) && (!shared)){
+        dataString = shareData;
+		fillForm(shareData);
+		console.log("sdilim");
+    }
+    
+    //Ajax spusti php skript
+    var data = getJSON(dataString, drawn);
+    var chart = document.getElementById('chart');
+    var layout = getLayout(dataString);
 
-        Plotly.newPlot(chart, data, layout, {scrollZoom: true});
+    Plotly.newPlot(chart, data, layout, {scrollZoom: true});
 }

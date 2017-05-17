@@ -24,6 +24,11 @@ function getOptions(dataString) {
   var options = {
       curveType: "none",
       width: '100%',
+      height: '100%',
+      chartArea: {
+          top: 10,
+          height: '85%'
+      },
       height: 480,
       interpolateNulls: true,
       vAxis: { //Osa Y
@@ -38,6 +43,7 @@ function getOptions(dataString) {
           maxValue: new Date(2017, 3, 15, 0, 0, 0)
       },
       explorer: {
+          //actions: ['dragToZoom', 'rightClickToReset'],
           axis: 'horizontal',
           keepInBounds: true,
           maxZoomIn: 10.0,
